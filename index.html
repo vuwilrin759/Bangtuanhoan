@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bảng Tuần Hoàn Hóa Học</title>
+    <title>Bảng Tuần Hoàn Hóa Học Tương Tác</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+        
         .element-card {
             transition: all 0.3s ease;
             cursor: pointer;
@@ -36,8 +40,9 @@
             grid-template-columns: repeat(18, 1fr);
             grid-template-rows: repeat(9, 1fr);
             gap: 2px;
-            max-width: 1400px;
+            width: 100%;
             margin: 0 auto;
+            box-sizing: border-box;
         }
         
         .lanthanide-series, .actinide-series {
@@ -45,42 +50,72 @@
             display: grid;
             grid-template-columns: repeat(15, 1fr);
             gap: 2px;
-            max-width: 1200px;
+            width: 83.33%;
             margin-left: auto;
             margin-right: auto;
+            box-sizing: border-box;
         }
 
-        /* Responsive cho tablet (768px - 1200px) */
-        @media (max-width: 1200px) and (min-width: 768px) {
-            .periodic-grid {
-                gap: 1px;
-                max-width: 100%;
-            }
-            
+        /* Responsive cho desktop lớn (trên 1600px) */
+        @media (min-width: 1600px) {
             .element-card {
-                min-height: 50px;
-                padding: 1px;
+                min-height: 70px;
+                padding: 3px;
             }
             
             .element-card .text-lg {
-                font-size: 0.9rem;
+                font-size: 1.1rem;
+            }
+            
+            .element-card .text-xs {
+                font-size: 0.75rem;
+            }
+        }
+
+        /* Responsive cho desktop trung bình (1200px - 1600px) */
+        @media (max-width: 1600px) and (min-width: 1200px) {
+            .periodic-grid {
+                gap: 1.5px;
+            }
+            
+            .element-card {
+                min-height: 58px;
+                padding: 2px;
+            }
+            
+            .element-card .text-lg {
+                font-size: 0.95rem;
             }
             
             .element-card .text-xs {
                 font-size: 0.65rem;
             }
-            
-            .lanthanide-series, .actinide-series {
+        }
+
+        /* Responsive cho desktop nhỏ (1024px - 1200px) */
+        @media (max-width: 1200px) and (min-width: 1024px) {
+            .periodic-grid {
                 gap: 1px;
-                margin-top: 15px;
+            }
+            
+            .element-card {
+                min-height: 48px;
+                padding: 2px;
+            }
+            
+            .element-card .text-lg {
+                font-size: 0.85rem;
+            }
+            
+            .element-card .text-xs {
+                font-size: 0.55rem;
             }
         }
 
-        /* Responsive cho điện thoại lớn (480px - 768px) */
-        @media (max-width: 768px) and (min-width: 480px) {
+        /* Responsive cho tablet (768px - 1024px) */
+        @media (max-width: 1024px) and (min-width: 768px) {
             .periodic-grid {
                 gap: 1px;
-                max-width: 100%;
             }
             
             .element-card {
@@ -100,34 +135,19 @@
             
             .lanthanide-series, .actinide-series {
                 gap: 1px;
-                margin-top: 10px;
-                overflow-x: auto;
-                padding-bottom: 5px;
-            }
-            
-            h1 {
-                font-size: 1.8rem !important;
-            }
-            
-            h2 {
-                font-size: 1.1rem !important;
-            }
-            
-            h3 {
-                font-size: 1rem !important;
+                margin-top: 12px;
             }
         }
 
-        /* Responsive cho điện thoại nhỏ (360px - 480px) */
-        @media (max-width: 480px) {
+        /* Responsive cho điện thoại lớn (480px - 768px) */
+        @media (max-width: 768px) and (min-width: 480px) {
             .periodic-grid {
                 gap: 0.5px;
-                max-width: 100%;
             }
             
             .element-card {
-                min-height: 35px;
-                padding: 0.5px;
+                min-height: 32px;
+                padding: 1px;
             }
             
             .element-card .text-lg {
@@ -143,13 +163,10 @@
             .lanthanide-series, .actinide-series {
                 gap: 0.5px;
                 margin-top: 8px;
-                overflow-x: auto;
-                padding-bottom: 5px;
             }
             
             h1 {
-                font-size: 1.5rem !important;
-                margin-bottom: 1rem !important;
+                font-size: 1.6rem !important;
             }
             
             h2 {
@@ -161,42 +178,82 @@
             }
         }
 
-        /* Responsive cho điện thoại rất nhỏ (dưới 360px) */
-        @media (max-width: 360px) {
+        /* Responsive cho điện thoại nhỏ (360px - 480px) */
+        @media (max-width: 480px) {
             .periodic-grid {
-                gap: 0.5px;
-                font-size: 0.7rem;
+                gap: 0.25px;
             }
             
             .element-card {
-                min-height: 30px;
-                padding: 0.25px;
+                min-height: 26px;
+                padding: 0.5px;
             }
             
             .element-card .text-lg {
-                font-size: 0.6rem;
+                font-size: 0.55rem;
                 font-weight: bold;
             }
             
             .element-card .text-xs {
-                font-size: 0.4rem;
+                font-size: 0.35rem;
                 line-height: 0.8;
             }
             
             .lanthanide-series, .actinide-series {
-                gap: 0.5px;
-                margin-top: 5px;
+                gap: 0.25px;
+                margin-top: 6px;
             }
             
             h1 {
-                font-size: 1.25rem !important;
+                font-size: 1.4rem !important;
+                margin-bottom: 0.8rem !important;
+            }
+            
+            h2 {
+                font-size: 0.9rem !important;
+            }
+            
+            h3 {
+                font-size: 0.8rem !important;
+            }
+        }
+
+        /* Responsive cho điện thoại rất nhỏ (dưới 360px) */
+        @media (max-width: 360px) {
+            .periodic-grid {
+                gap: 0.1px;
+                font-size: 0.6rem;
+            }
+            
+            .element-card {
+                min-height: 20px;
+                padding: 0.25px;
+            }
+            
+            .element-card .text-lg {
+                font-size: 0.45rem;
+                font-weight: bold;
+            }
+            
+            .element-card .text-xs {
+                font-size: 0.3rem;
+                line-height: 0.7;
+            }
+            
+            .lanthanide-series, .actinide-series {
+                gap: 0.1px;
+                margin-top: 4px;
+            }
+            
+            h1 {
+                font-size: 1.2rem !important;
                 margin-bottom: 0.5rem !important;
             }
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 min-h-screen p-2 sm:p-4">
-    <div class="container mx-auto">
+<body class="bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 min-h-screen p-2 sm:p-4 overflow-x-hidden">
+    <div class="container mx-auto max-w-full px-1 sm:px-2">
         <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white text-center mb-4 md:mb-8 drop-shadow-lg">
             🧪 Bảng Tuần Hoàn Hóa Học
         </h1>
@@ -245,57 +302,57 @@
         </div>
 
         <!-- Main Periodic Table -->
-        <div class="bg-white/5 backdrop-blur-md rounded-xl p-2 sm:p-4 md:p-6 overflow-x-auto">
+        <div class="bg-white/5 backdrop-blur-md rounded-xl p-2 sm:p-4 md:p-6">
             <div class="periodic-grid">
                 <!-- Row 1 -->
                 <div class="element-card phi-kim rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('H')">
                     <div class="text-lg font-bold">H</div>
                     <div class="text-xs">1</div>
-                    <div class="text-xs">Hydro</div>
+                    <div class="text-xs">Hydrogen</div>
                 </div>
                 <div class="empty-cell"></div><div class="empty-cell"></div><div class="empty-cell"></div><div class="empty-cell"></div><div class="empty-cell"></div><div class="empty-cell"></div><div class="empty-cell"></div><div class="empty-cell"></div><div class="empty-cell"></div><div class="empty-cell"></div><div class="empty-cell"></div><div class="empty-cell"></div><div class="empty-cell"></div><div class="empty-cell"></div><div class="empty-cell"></div><div class="empty-cell"></div>
                 <div class="element-card khi-hiem rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('He')">
                     <div class="text-lg font-bold">He</div>
                     <div class="text-xs">2</div>
-                    <div class="text-xs">Heli</div>
+                    <div class="text-xs">Helium</div>
                 </div>
 
                 <!-- Row 2 -->
                 <div class="element-card kim-loai-kiem rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Li')">
                     <div class="text-lg font-bold">Li</div>
                     <div class="text-xs">3</div>
-                    <div class="text-xs">Liti</div>
+                    <div class="text-xs">Lithium</div>
                 </div>
                 <div class="element-card kim-loai-kiem-tho rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Be')">
                     <div class="text-lg font-bold">Be</div>
                     <div class="text-xs">4</div>
-                    <div class="text-xs">Berili</div>
+                    <div class="text-xs">Beryllium</div>
                 </div>
                 <div class="empty-cell"></div><div class="empty-cell"></div><div class="empty-cell"></div><div class="empty-cell"></div><div class="empty-cell"></div><div class="empty-cell"></div><div class="empty-cell"></div><div class="empty-cell"></div><div class="empty-cell"></div><div class="empty-cell"></div>
                 <div class="element-card a-kim rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('B')">
                     <div class="text-lg font-bold">B</div>
                     <div class="text-xs">5</div>
-                    <div class="text-xs">Bo</div>
+                    <div class="text-xs">Boron</div>
                 </div>
                 <div class="element-card phi-kim rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('C')">
                     <div class="text-lg font-bold">C</div>
                     <div class="text-xs">6</div>
-                    <div class="text-xs">Cacbon</div>
+                    <div class="text-xs">Carbon</div>
                 </div>
                 <div class="element-card phi-kim rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('N')">
                     <div class="text-lg font-bold">N</div>
                     <div class="text-xs">7</div>
-                    <div class="text-xs">Nitơ</div>
+                    <div class="text-xs">Nitrogen</div>
                 </div>
                 <div class="element-card phi-kim rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('O')">
                     <div class="text-lg font-bold">O</div>
                     <div class="text-xs">8</div>
-                    <div class="text-xs">Oxi</div>
+                    <div class="text-xs">Oxygen</div>
                 </div>
                 <div class="element-card phi-kim rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('F')">
                     <div class="text-lg font-bold">F</div>
                     <div class="text-xs">9</div>
-                    <div class="text-xs">Flo</div>
+                    <div class="text-xs">Fluorine</div>
                 </div>
                 <div class="element-card khi-hiem rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Ne')">
                     <div class="text-lg font-bold">Ne</div>
@@ -307,38 +364,38 @@
                 <div class="element-card kim-loai-kiem rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Na')">
                     <div class="text-lg font-bold">Na</div>
                     <div class="text-xs">11</div>
-                    <div class="text-xs">Natri</div>
+                    <div class="text-xs">Sodium</div>
                 </div>
                 <div class="element-card kim-loai-kiem-tho rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Mg')">
                     <div class="text-lg font-bold">Mg</div>
                     <div class="text-xs">12</div>
-                    <div class="text-xs">Magie</div>
+                    <div class="text-xs">Magnesium</div>
                 </div>
                 <div class="empty-cell"></div><div class="empty-cell"></div><div class="empty-cell"></div><div class="empty-cell"></div><div class="empty-cell"></div><div class="empty-cell"></div><div class="empty-cell"></div><div class="empty-cell"></div><div class="empty-cell"></div><div class="empty-cell"></div>
                 <div class="element-card kim-loai-hau-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Al')">
                     <div class="text-lg font-bold">Al</div>
                     <div class="text-xs">13</div>
-                    <div class="text-xs">Nhôm</div>
+                    <div class="text-xs">Aluminium</div>
                 </div>
                 <div class="element-card a-kim rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Si')">
                     <div class="text-lg font-bold">Si</div>
                     <div class="text-xs">14</div>
-                    <div class="text-xs">Silic</div>
+                    <div class="text-xs">Silicon</div>
                 </div>
                 <div class="element-card phi-kim rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('P')">
                     <div class="text-lg font-bold">P</div>
                     <div class="text-xs">15</div>
-                    <div class="text-xs">Photpho</div>
+                    <div class="text-xs">Phosphorus</div>
                 </div>
                 <div class="element-card phi-kim rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('S')">
                     <div class="text-lg font-bold">S</div>
                     <div class="text-xs">16</div>
-                    <div class="text-xs">Lưu huỳnh</div>
+                    <div class="text-xs">Sulfur</div>
                 </div>
                 <div class="element-card phi-kim rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Cl')">
                     <div class="text-lg font-bold">Cl</div>
                     <div class="text-xs">17</div>
-                    <div class="text-xs">Clo</div>
+                    <div class="text-xs">Chlorine</div>
                 </div>
                 <div class="element-card khi-hiem rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Ar')">
                     <div class="text-lg font-bold">Ar</div>
@@ -350,87 +407,87 @@
                 <div class="element-card kim-loai-kiem rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('K')">
                     <div class="text-lg font-bold">K</div>
                     <div class="text-xs">19</div>
-                    <div class="text-xs">Kali</div>
+                    <div class="text-xs">Potassium</div>
                 </div>
                 <div class="element-card kim-loai-kiem-tho rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Ca')">
                     <div class="text-lg font-bold">Ca</div>
                     <div class="text-xs">20</div>
-                    <div class="text-xs">Canxi</div>
+                    <div class="text-xs">Calcium</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Sc')">
                     <div class="text-lg font-bold">Sc</div>
                     <div class="text-xs">21</div>
-                    <div class="text-xs">Scandi</div>
+                    <div class="text-xs">Scandium</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Ti')">
                     <div class="text-lg font-bold">Ti</div>
                     <div class="text-xs">22</div>
-                    <div class="text-xs">Titan</div>
+                    <div class="text-xs">Titanium</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('V')">
                     <div class="text-lg font-bold">V</div>
                     <div class="text-xs">23</div>
-                    <div class="text-xs">Vanadi</div>
+                    <div class="text-xs">Vanadium</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Cr')">
                     <div class="text-lg font-bold">Cr</div>
                     <div class="text-xs">24</div>
-                    <div class="text-xs">Crom</div>
+                    <div class="text-xs">Chromium</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Mn')">
                     <div class="text-lg font-bold">Mn</div>
                     <div class="text-xs">25</div>
-                    <div class="text-xs">Mangan</div>
+                    <div class="text-xs">Manganese</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Fe')">
                     <div class="text-lg font-bold">Fe</div>
                     <div class="text-xs">26</div>
-                    <div class="text-xs">Sắt</div>
+                    <div class="text-xs">Iron</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Co')">
                     <div class="text-lg font-bold">Co</div>
                     <div class="text-xs">27</div>
-                    <div class="text-xs">Coban</div>
+                    <div class="text-xs">Cobalt</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Ni')">
                     <div class="text-lg font-bold">Ni</div>
                     <div class="text-xs">28</div>
-                    <div class="text-xs">Niken</div>
+                    <div class="text-xs">Nickel</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Cu')">
                     <div class="text-lg font-bold">Cu</div>
                     <div class="text-xs">29</div>
-                    <div class="text-xs">Đồng</div>
+                    <div class="text-xs">Copper</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Zn')">
                     <div class="text-lg font-bold">Zn</div>
                     <div class="text-xs">30</div>
-                    <div class="text-xs">Kẽm</div>
+                    <div class="text-xs">Zinc</div>
                 </div>
                 <div class="element-card kim-loai-hau-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Ga')">
                     <div class="text-lg font-bold">Ga</div>
                     <div class="text-xs">31</div>
-                    <div class="text-xs">Gali</div>
+                    <div class="text-xs">Gallium</div>
                 </div>
                 <div class="element-card a-kim rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Ge')">
                     <div class="text-lg font-bold">Ge</div>
                     <div class="text-xs">32</div>
-                    <div class="text-xs">Gecmani</div>
+                    <div class="text-xs">Germanium</div>
                 </div>
                 <div class="element-card a-kim rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('As')">
                     <div class="text-lg font-bold">As</div>
                     <div class="text-xs">33</div>
-                    <div class="text-xs">Asen</div>
+                    <div class="text-xs">Arsenic</div>
                 </div>
                 <div class="element-card phi-kim rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Se')">
                     <div class="text-lg font-bold">Se</div>
                     <div class="text-xs">34</div>
-                    <div class="text-xs">Selen</div>
+                    <div class="text-xs">Selenium</div>
                 </div>
                 <div class="element-card phi-kim rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Br')">
                     <div class="text-lg font-bold">Br</div>
                     <div class="text-xs">35</div>
-                    <div class="text-xs">Brom</div>
+                    <div class="text-xs">Bromine</div>
                 </div>
                 <div class="element-card khi-hiem rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Kr')">
                     <div class="text-lg font-bold">Kr</div>
@@ -442,87 +499,87 @@
                 <div class="element-card kim-loai-kiem rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Rb')">
                     <div class="text-lg font-bold">Rb</div>
                     <div class="text-xs">37</div>
-                    <div class="text-xs">Rubidi</div>
+                    <div class="text-xs">Rubidium</div>
                 </div>
                 <div class="element-card kim-loai-kiem-tho rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Sr')">
                     <div class="text-lg font-bold">Sr</div>
                     <div class="text-xs">38</div>
-                    <div class="text-xs">Stronti</div>
+                    <div class="text-xs">Strontium</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Y')">
                     <div class="text-lg font-bold">Y</div>
                     <div class="text-xs">39</div>
-                    <div class="text-xs">Ytri</div>
+                    <div class="text-xs">Yttrium</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Zr')">
                     <div class="text-lg font-bold">Zr</div>
                     <div class="text-xs">40</div>
-                    <div class="text-xs">Zirconi</div>
+                    <div class="text-xs">Zirconium</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Nb')">
                     <div class="text-lg font-bold">Nb</div>
                     <div class="text-xs">41</div>
-                    <div class="text-xs">Niobi</div>
+                    <div class="text-xs">Niobium</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Mo')">
                     <div class="text-lg font-bold">Mo</div>
                     <div class="text-xs">42</div>
-                    <div class="text-xs">Molipden</div>
+                    <div class="text-xs">Molybdenum</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Tc')">
                     <div class="text-lg font-bold">Tc</div>
                     <div class="text-xs">43</div>
-                    <div class="text-xs">Tecneti</div>
+                    <div class="text-xs">Technetium</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Ru')">
                     <div class="text-lg font-bold">Ru</div>
                     <div class="text-xs">44</div>
-                    <div class="text-xs">Ruteni</div>
+                    <div class="text-xs">Ruthenium</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Rh')">
                     <div class="text-lg font-bold">Rh</div>
                     <div class="text-xs">45</div>
-                    <div class="text-xs">Rhodi</div>
+                    <div class="text-xs">Rhodium</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Pd')">
                     <div class="text-lg font-bold">Pd</div>
                     <div class="text-xs">46</div>
-                    <div class="text-xs">Paladi</div>
+                    <div class="text-xs">Palladium</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Ag')">
                     <div class="text-lg font-bold">Ag</div>
                     <div class="text-xs">47</div>
-                    <div class="text-xs">Bạc</div>
+                    <div class="text-xs">Silver</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Cd')">
                     <div class="text-lg font-bold">Cd</div>
                     <div class="text-xs">48</div>
-                    <div class="text-xs">Cadmi</div>
+                    <div class="text-xs">Cadmium</div>
                 </div>
                 <div class="element-card kim-loai-hau-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('In')">
                     <div class="text-lg font-bold">In</div>
                     <div class="text-xs">49</div>
-                    <div class="text-xs">Indi</div>
+                    <div class="text-xs">Indium</div>
                 </div>
                 <div class="element-card kim-loai-hau-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Sn')">
                     <div class="text-lg font-bold">Sn</div>
                     <div class="text-xs">50</div>
-                    <div class="text-xs">Thiếc</div>
+                    <div class="text-xs">Tin</div>
                 </div>
                 <div class="element-card a-kim rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Sb')">
                     <div class="text-lg font-bold">Sb</div>
                     <div class="text-xs">51</div>
-                    <div class="text-xs">Antimon</div>
+                    <div class="text-xs">Antimony</div>
                 </div>
                 <div class="element-card a-kim rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Te')">
                     <div class="text-lg font-bold">Te</div>
                     <div class="text-xs">52</div>
-                    <div class="text-xs">Telua</div>
+                    <div class="text-xs">Tellurium</div>
                 </div>
                 <div class="element-card phi-kim rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('I')">
                     <div class="text-lg font-bold">I</div>
                     <div class="text-xs">53</div>
-                    <div class="text-xs">Iot</div>
+                    <div class="text-xs">Iodine</div>
                 </div>
                 <div class="element-card khi-hiem rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Xe')">
                     <div class="text-lg font-bold">Xe</div>
@@ -534,87 +591,87 @@
                 <div class="element-card kim-loai-kiem rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Cs')">
                     <div class="text-lg font-bold">Cs</div>
                     <div class="text-xs">55</div>
-                    <div class="text-xs">Xezi</div>
+                    <div class="text-xs">Caesium</div>
                 </div>
                 <div class="element-card kim-loai-kiem-tho rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Ba')">
                     <div class="text-lg font-bold">Ba</div>
                     <div class="text-xs">56</div>
-                    <div class="text-xs">Bari</div>
+                    <div class="text-xs">Barium</div>
                 </div>
                 <div class="element-card lanthanide rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('La')">
                     <div class="text-lg font-bold">La</div>
                     <div class="text-xs">57</div>
-                    <div class="text-xs">Lantan</div>
+                    <div class="text-xs">Lanthanum</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Hf')">
                     <div class="text-lg font-bold">Hf</div>
                     <div class="text-xs">72</div>
-                    <div class="text-xs">Hafni</div>
+                    <div class="text-xs">Hafnium</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Ta')">
                     <div class="text-lg font-bold">Ta</div>
                     <div class="text-xs">73</div>
-                    <div class="text-xs">Tantal</div>
+                    <div class="text-xs">Tantalum</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('W')">
                     <div class="text-lg font-bold">W</div>
                     <div class="text-xs">74</div>
-                    <div class="text-xs">Vonfram</div>
+                    <div class="text-xs">Tungsten</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Re')">
                     <div class="text-lg font-bold">Re</div>
                     <div class="text-xs">75</div>
-                    <div class="text-xs">Rheni</div>
+                    <div class="text-xs">Rhenium</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Os')">
                     <div class="text-lg font-bold">Os</div>
                     <div class="text-xs">76</div>
-                    <div class="text-xs">Osmi</div>
+                    <div class="text-xs">Osmium</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Ir')">
                     <div class="text-lg font-bold">Ir</div>
                     <div class="text-xs">77</div>
-                    <div class="text-xs">Iridi</div>
+                    <div class="text-xs">Iridium</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Pt')">
                     <div class="text-lg font-bold">Pt</div>
                     <div class="text-xs">78</div>
-                    <div class="text-xs">Platin</div>
+                    <div class="text-xs">Platinum</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Au')">
                     <div class="text-lg font-bold">Au</div>
                     <div class="text-xs">79</div>
-                    <div class="text-xs">Vàng</div>
+                    <div class="text-xs">Gold</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Hg')">
                     <div class="text-lg font-bold">Hg</div>
                     <div class="text-xs">80</div>
-                    <div class="text-xs">Thủy ngân</div>
+                    <div class="text-xs">Mercury</div>
                 </div>
                 <div class="element-card kim-loai-hau-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Tl')">
                     <div class="text-lg font-bold">Tl</div>
                     <div class="text-xs">81</div>
-                    <div class="text-xs">Tali</div>
+                    <div class="text-xs">Thallium</div>
                 </div>
                 <div class="element-card kim-loai-hau-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Pb')">
                     <div class="text-lg font-bold">Pb</div>
                     <div class="text-xs">82</div>
-                    <div class="text-xs">Chì</div>
+                    <div class="text-xs">Lead</div>
                 </div>
                 <div class="element-card kim-loai-hau-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Bi')">
                     <div class="text-lg font-bold">Bi</div>
                     <div class="text-xs">83</div>
-                    <div class="text-xs">Bismut</div>
+                    <div class="text-xs">Bismuth</div>
                 </div>
                 <div class="element-card a-kim rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Po')">
                     <div class="text-lg font-bold">Po</div>
                     <div class="text-xs">84</div>
-                    <div class="text-xs">Poloni</div>
+                    <div class="text-xs">Polonium</div>
                 </div>
                 <div class="element-card phi-kim rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('At')">
                     <div class="text-lg font-bold">At</div>
                     <div class="text-xs">85</div>
-                    <div class="text-xs">Astatin</div>
+                    <div class="text-xs">Astatine</div>
                 </div>
                 <div class="element-card khi-hiem rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Rn')">
                     <div class="text-lg font-bold">Rn</div>
@@ -626,67 +683,67 @@
                 <div class="element-card kim-loai-kiem rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Fr')">
                     <div class="text-lg font-bold">Fr</div>
                     <div class="text-xs">87</div>
-                    <div class="text-xs">Franxi</div>
+                    <div class="text-xs">Francium</div>
                 </div>
                 <div class="element-card kim-loai-kiem-tho rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Ra')">
                     <div class="text-lg font-bold">Ra</div>
                     <div class="text-xs">88</div>
-                    <div class="text-xs">Radi</div>
+                    <div class="text-xs">Radium</div>
                 </div>
                 <div class="element-card actinide rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Ac')">
                     <div class="text-lg font-bold">Ac</div>
                     <div class="text-xs">89</div>
-                    <div class="text-xs">Actini</div>
+                    <div class="text-xs">Actinium</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Rf')">
                     <div class="text-lg font-bold">Rf</div>
                     <div class="text-xs">104</div>
-                    <div class="text-xs">Rutherfordi</div>
+                    <div class="text-xs">Rutherfordium</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Db')">
                     <div class="text-lg font-bold">Db</div>
                     <div class="text-xs">105</div>
-                    <div class="text-xs">Dubni</div>
+                    <div class="text-xs">Dubnium</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Sg')">
                     <div class="text-lg font-bold">Sg</div>
                     <div class="text-xs">106</div>
-                    <div class="text-xs">Seaborgi</div>
+                    <div class="text-xs">Seaborgium</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Bh')">
                     <div class="text-lg font-bold">Bh</div>
                     <div class="text-xs">107</div>
-                    <div class="text-xs">Bohri</div>
+                    <div class="text-xs">Bohrium</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Hs')">
                     <div class="text-lg font-bold">Hs</div>
                     <div class="text-xs">108</div>
-                    <div class="text-xs">Hassi</div>
+                    <div class="text-xs">Hassium</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Mt')">
                     <div class="text-lg font-bold">Mt</div>
                     <div class="text-xs">109</div>
-                    <div class="text-xs">Meitneri</div>
+                    <div class="text-xs">Meitnerium</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Ds')">
                     <div class="text-lg font-bold">Ds</div>
                     <div class="text-xs">110</div>
-                    <div class="text-xs">Darmstadti</div>
+                    <div class="text-xs">Darmstadtium</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Rg')">
                     <div class="text-lg font-bold">Rg</div>
                     <div class="text-xs">111</div>
-                    <div class="text-xs">Roentgeni</div>
+                    <div class="text-xs">Roentgenium</div>
                 </div>
                 <div class="element-card kim-loai-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Cn')">
                     <div class="text-lg font-bold">Cn</div>
                     <div class="text-xs">112</div>
-                    <div class="text-xs">Copernici</div>
+                    <div class="text-xs">Copernicium</div>
                 </div>
                 <div class="element-card kim-loai-hau-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Nh')">
                     <div class="text-lg font-bold">Nh</div>
                     <div class="text-xs">113</div>
-                    <div class="text-xs">Nihoni</div>
+                    <div class="text-xs">Nihonium</div>
                 </div>
                 <div class="element-card kim-loai-hau-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Fl')">
                     <div class="text-lg font-bold">Fl</div>
@@ -696,17 +753,17 @@
                 <div class="element-card kim-loai-hau-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Mc')">
                     <div class="text-lg font-bold">Mc</div>
                     <div class="text-xs">115</div>
-                    <div class="text-xs">Moscovi</div>
+                    <div class="text-xs">Moscovium</div>
                 </div>
                 <div class="element-card kim-loai-hau-chuyen-tiep rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Lv')">
                     <div class="text-lg font-bold">Lv</div>
                     <div class="text-xs">116</div>
-                    <div class="text-xs">Livermori</div>
+                    <div class="text-xs">Livermorium</div>
                 </div>
                 <div class="element-card phi-kim rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Ts')">
                     <div class="text-lg font-bold">Ts</div>
                     <div class="text-xs">117</div>
-                    <div class="text-xs">Tennessin</div>
+                    <div class="text-xs">Tennessine</div>
                 </div>
                 <div class="element-card khi-hiem rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Og')">
                     <div class="text-lg font-bold">Og</div>
@@ -726,72 +783,72 @@
                     <div class="element-card lanthanide rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Ce')">
                         <div class="text-lg font-bold">Ce</div>
                         <div class="text-xs">58</div>
-                        <div class="text-xs">Xeri</div>
+                        <div class="text-xs">Cerium</div>
                     </div>
                     <div class="element-card lanthanide rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Pr')">
                         <div class="text-lg font-bold">Pr</div>
                         <div class="text-xs">59</div>
-                        <div class="text-xs">Praseodim</div>
+                        <div class="text-xs">Praseodymium</div>
                     </div>
                     <div class="element-card lanthanide rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Nd')">
                         <div class="text-lg font-bold">Nd</div>
                         <div class="text-xs">60</div>
-                        <div class="text-xs">Neodim</div>
+                        <div class="text-xs">Neodymium</div>
                     </div>
                     <div class="element-card lanthanide rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Pm')">
                         <div class="text-lg font-bold">Pm</div>
                         <div class="text-xs">61</div>
-                        <div class="text-xs">Prometi</div>
+                        <div class="text-xs">Promethium</div>
                     </div>
                     <div class="element-card lanthanide rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Sm')">
                         <div class="text-lg font-bold">Sm</div>
                         <div class="text-xs">62</div>
-                        <div class="text-xs">Samari</div>
+                        <div class="text-xs">Samarium</div>
                     </div>
                     <div class="element-card lanthanide rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Eu')">
                         <div class="text-lg font-bold">Eu</div>
                         <div class="text-xs">63</div>
-                        <div class="text-xs">Europi</div>
+                        <div class="text-xs">Europium</div>
                     </div>
                     <div class="element-card lanthanide rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Gd')">
                         <div class="text-lg font-bold">Gd</div>
                         <div class="text-xs">64</div>
-                        <div class="text-xs">Gadolini</div>
+                        <div class="text-xs">Gadolinium</div>
                     </div>
                     <div class="element-card lanthanide rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Tb')">
                         <div class="text-lg font-bold">Tb</div>
                         <div class="text-xs">65</div>
-                        <div class="text-xs">Terbi</div>
+                        <div class="text-xs">Terbium</div>
                     </div>
                     <div class="element-card lanthanide rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Dy')">
                         <div class="text-lg font-bold">Dy</div>
                         <div class="text-xs">66</div>
-                        <div class="text-xs">Dysproxi</div>
+                        <div class="text-xs">Dysprosium</div>
                     </div>
                     <div class="element-card lanthanide rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Ho')">
                         <div class="text-lg font-bold">Ho</div>
                         <div class="text-xs">67</div>
-                        <div class="text-xs">Holmi</div>
+                        <div class="text-xs">Holmium</div>
                     </div>
                     <div class="element-card lanthanide rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Er')">
                         <div class="text-lg font-bold">Er</div>
                         <div class="text-xs">68</div>
-                        <div class="text-xs">Erbi</div>
+                        <div class="text-xs">Erbium</div>
                     </div>
                     <div class="element-card lanthanide rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Tm')">
                         <div class="text-lg font-bold">Tm</div>
                         <div class="text-xs">69</div>
-                        <div class="text-xs">Thuli</div>
+                        <div class="text-xs">Thulium</div>
                     </div>
                     <div class="element-card lanthanide rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Yb')">
                         <div class="text-lg font-bold">Yb</div>
                         <div class="text-xs">70</div>
-                        <div class="text-xs">Yterbi</div>
+                        <div class="text-xs">Ytterbium</div>
                     </div>
                     <div class="element-card lanthanide rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Lu')">
                         <div class="text-lg font-bold">Lu</div>
                         <div class="text-xs">71</div>
-                        <div class="text-xs">Luteti</div>
+                        <div class="text-xs">Lutetium</div>
                     </div>
                 </div>
             </div>
@@ -803,79 +860,79 @@
                     <div class="element-card actinide rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Th')">
                         <div class="text-lg font-bold">Th</div>
                         <div class="text-xs">90</div>
-                        <div class="text-xs">Thori</div>
+                        <div class="text-xs">Thorium</div>
                     </div>
                     <div class="element-card actinide rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Pa')">
                         <div class="text-lg font-bold">Pa</div>
                         <div class="text-xs">91</div>
-                        <div class="text-xs">Protactini</div>
+                        <div class="text-xs">Protactinium</div>
                     </div>
                     <div class="element-card actinide rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('U')">
                         <div class="text-lg font-bold">U</div>
                         <div class="text-xs">92</div>
-                        <div class="text-xs">Urani</div>
+                        <div class="text-xs">Uranium</div>
                     </div>
                     <div class="element-card actinide rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Np')">
                         <div class="text-lg font-bold">Np</div>
                         <div class="text-xs">93</div>
-                        <div class="text-xs">Neptuni</div>
+                        <div class="text-xs">Neptunium</div>
                     </div>
                     <div class="element-card actinide rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Pu')">
                         <div class="text-lg font-bold">Pu</div>
                         <div class="text-xs">94</div>
-                        <div class="text-xs">Plutoni</div>
+                        <div class="text-xs">Plutonium</div>
                     </div>
                     <div class="element-card actinide rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Am')">
                         <div class="text-lg font-bold">Am</div>
                         <div class="text-xs">95</div>
-                        <div class="text-xs">Americi</div>
+                        <div class="text-xs">Americium</div>
                     </div>
                     <div class="element-card actinide rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Cm')">
                         <div class="text-lg font-bold">Cm</div>
                         <div class="text-xs">96</div>
-                        <div class="text-xs">Curi</div>
+                        <div class="text-xs">Curium</div>
                     </div>
                     <div class="element-card actinide rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Bk')">
                         <div class="text-lg font-bold">Bk</div>
                         <div class="text-xs">97</div>
-                        <div class="text-xs">Berkeli</div>
+                        <div class="text-xs">Berkelium</div>
                     </div>
                     <div class="element-card actinide rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Cf')">
                         <div class="text-lg font-bold">Cf</div>
                         <div class="text-xs">98</div>
-                        <div class="text-xs">Californi</div>
+                        <div class="text-xs">Californium</div>
                     </div>
                     <div class="element-card actinide rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Es')">
                         <div class="text-lg font-bold">Es</div>
                         <div class="text-xs">99</div>
-                        <div class="text-xs">Einsteini</div>
+                        <div class="text-xs">Einsteinium</div>
                     </div>
                     <div class="element-card actinide rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Fm')">
                         <div class="text-lg font-bold">Fm</div>
                         <div class="text-xs">100</div>
-                        <div class="text-xs">Fermi</div>
+                        <div class="text-xs">Fermium</div>
                     </div>
                     <div class="element-card actinide rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Md')">
                         <div class="text-lg font-bold">Md</div>
                         <div class="text-xs">101</div>
-                        <div class="text-xs">Mendelevi</div>
+                        <div class="text-xs">Mendelevium</div>
                     </div>
                     <div class="element-card actinide rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('No')">
                         <div class="text-lg font-bold">No</div>
                         <div class="text-xs">102</div>
-                        <div class="text-xs">Nobeli</div>
+                        <div class="text-xs">Nobelium</div>
                     </div>
                     <div class="element-card actinide rounded-lg p-2 text-center text-white font-semibold text-xs" onclick="openElement('Lr')">
                         <div class="text-lg font-bold">Lr</div>
                         <div class="text-xs">103</div>
-                        <div class="text-xs">Lawrenci</div>
+                        <div class="text-xs">Lawrencium</div>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="text-center mt-6 md:mt-8 text-white/80 px-4">
-            <p class="text-sm">💡 Click vào bất kỳ nguyên tố nào để tìm hiểu thêm chi tiết nhé!!!</p>
+            <p class="text-sm">💡 Click vào bất kỳ nguyên tố nào để tìm hiểu chi tiết thêm nhé!</p>
         </div>
     </div>
 
@@ -1026,5 +1083,5 @@
             });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97c6f14c75915c88',t:'MTc1NzQyMzYwNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97cfdd0f429bfe84',t:'MTc1NzUxNzE0NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
